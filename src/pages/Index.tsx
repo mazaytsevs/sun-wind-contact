@@ -4,6 +4,8 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Mission from '@/components/Mission';
 import Technologies from '@/components/Technologies';
+import BloggerTestimonials from '@/components/BloggerTestimonials';
+import SunGame from '@/components/SunGame';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 
@@ -41,6 +43,8 @@ const Index = () => {
         <Hero />
         <Mission />
         <Technologies />
+        <BloggerTestimonials />
+        <SunGame />
         <ContactForm />
       </main>
       <Footer />
