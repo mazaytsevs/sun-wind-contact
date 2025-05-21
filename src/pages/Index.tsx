@@ -8,6 +8,11 @@ import BloggerTestimonials from '@/components/BloggerTestimonials';
 import SunGame from '@/components/SunGame';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
+import AiChat from '@/components/AiChat';
+import NewsletterSubscription from '@/components/NewsletterSubscription';
+import ConsultationBooking from '@/components/ConsultationBooking';
+import NewsSection from '@/components/NewsSection';
+import AiProductSupport from '@/components/AiProductSupport';
 
 const Index = () => {
   useEffect(() => {
@@ -43,8 +48,13 @@ const Index = () => {
         <Hero />
         <Mission />
         <Technologies />
+        <NewsSection />
         <BloggerTestimonials />
+        <AiProductSupport />
         <SunGame />
+        <AiChat />
+        <NewsletterSubscription />
+        <ConsultationBooking />
         <ContactForm />
       </main>
       <Footer />
