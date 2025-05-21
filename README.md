@@ -1,73 +1,65 @@
-# Welcome to your Lovable project
+# ЭкоЭнергия — pet-проект
 
-## Project info
+Веб-приложение для консультаций по возобновляемой энергетике, демонстрирующее современные подходы к фронтенду и бэкенду.
 
-**URL**: https://lovable.dev/projects/42150a00-69c8-48eb-8f34-1dfb21010c11
+## Что умеет проект
 
-## How can I edit this code?
+- **AI-чат с GigaChat** — виртуальный помощник отвечает на вопросы о продуктах и технологиях компании (интеграция с GigaChat API, строгие правила тематики, лимит сообщений на пользователя).
+- **Форма обратной связи** — сообщения с сайта отправляются на email владельца через SMTP (Яндекс.Почта).
+- **Новости и разделы о продуктах** — пока хардкод.
+- **Сохранение истории чата** — история сообщений хранится в localStorage пользователя.
+- **Ограничение по количеству сообщений** — лимит на обращения к AI для каждого IP и браузера (кроме владельца).
+- **Адаптивный дизайн** — современный UI на React, TailwindCSS, shadcn/ui.
+- **Деплой через Docker и Render.com** — фронт и бэк собираются в один контейнер, легко разворачиваются на любой платформе.
 
-There are several ways of editing your application.
+## Технологии
 
-**Use Lovable**
+- React 18 + Vite + TypeScript
+- TailwindCSS + shadcn/ui
+- Express.js (Node.js)
+- GigaChat API
+- Nodemailer (SMTP)
+- Docker (multi-stage build)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/42150a00-69c8-48eb-8f34-1dfb21010c11) and start prompting.
+## Быстрый старт (локально)
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Клонируйте репозиторий и установите зависимости:
+   ```bash
+   npm install
+   ```
+2. Создайте файл `.env` в корне и укажите переменные (пример ниже).
+3. Запустите проект:
+   ```bash
+   npm run dev
+   ```
+   Фронт: http://localhost:8081/
+   Бэк: http://localhost:3000
 
-**Use your preferred IDE**
+## Переменные окружения (пример .env)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+GIGA_CHAT_ACCESS_KEY=...
+ADMIN_IP=...
+SMTP_HOST=smtp.yandex.ru
+SMTP_PORT=465
+SMTP_USER=your_email@yandex.ru
+SMTP_PASS=your_app_password
+VITE_API_URL=
 ```
 
-**Edit a file directly in GitHub**
+## Сборка и деплой через Docker
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. Соберите образ:
+   ```bash
+   docker buildx build --platform linux/amd64 -t yourdockerhub/sun-wind-contact:latest .
+   ```
+2. Запушьте в Docker Hub:
+   ```bash
+   docker push yourdockerhub/sun-wind-contact:latest
+   ```
+3. Разверните на Render.com или другом сервисе, указав переменные окружения через интерфейс платформы.
 
-**Use GitHub Codespaces**
+## Автор
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/42150a00-69c8-48eb-8f34-1dfb21010c11) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Мария Зайцева  
+[Telegram](https://t.me/mazay_tseva) | [LinkedIn](https://www.linkedin.com/in/mazaytsevs/)
