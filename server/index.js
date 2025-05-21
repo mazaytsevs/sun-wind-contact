@@ -4,16 +4,24 @@ import cors from "cors";
 import GigaChat from "gigachat";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
+import path from "path";
+import { fileURLToPath } from "url";
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
 const ADMIN_IP = process.env.ADMIN_IP;
-const LIMIT = 2;
+const LIMIT = 10;
 const ipCounters = {};
 
 app.use(cors());
 app.use(express.json());
+
+// Отдача статики
+app.use(express.static(path.join(__dirname, "../dist")));
 
 const systemMessage = {
   role: "system",
@@ -93,6 +101,11 @@ app.post("/send-contact", async (req, res) => {
     console.error("Mail error:", error);
     res.status(500).json({ error: "Ошибка отправки письма" });
   }
+});
+
+// SPA fallback: для всех остальных роутов отдаём index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
 app.listen(port, () => {
