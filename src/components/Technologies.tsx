@@ -1,10 +1,10 @@
 
 import { useEffect, useRef } from 'react';
-import { SolarPanel, Wind, Battery, Plug } from 'lucide-react';
+import { Sun, Wind, Battery, Plug } from 'lucide-react';
 
 const techCards = [
   {
-    icon: <SolarPanel className="h-12 w-12 text-eco-green mb-4" />,
+    icon: <Sun className="h-12 w-12 text-eco-green mb-4" />,
     title: 'Солнечные панели нового поколения',
     description: 'Высокоэффективные панели с КПД до 25%, работающие даже при низкой освещённости'
   },
