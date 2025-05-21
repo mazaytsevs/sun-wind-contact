@@ -13,8 +13,8 @@ const testimonials = [
   {
     name: "Мария Зайцева",
     role: "Создательница проекта «Зелёный дом»",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&h=200&auto=format&fit=crop",
-    quote: "Работая с командой ЭкоЭнергии, я была впечатлена их профессионализмом и инновационным подходом. Они действительно заботятся о будущем нашей планеты.",
+    image: "https://sun9-51.userapi.com/impg/GHBN32-kd2hrMnUAOche8Uvklrkh72FwgNiH6g/N1CKxtuVrVY.jpg?size=1440x2160&quality=95&sign=63f54785248efbfe530d64e95c95f397&type=album",
+    quote: "Как вы поняли, Эко-энергия - это мой pet-проект. Давайте знакомиться, я backend-разработчик и делаю всякие крутые штуки от парсеров до AI-интеграций! Не стесняйтесь писать мне в tg: @mazay_tseva",
     stars: 5
   },
   {

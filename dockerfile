@@ -1,31 +1,23 @@
-# Этап сборки
+# Этап сборки фронта
 FROM node:20-alpine as builder
-
 WORKDIR /app
-
-# Копируем файлы package.json и package-lock.json
 COPY package*.json ./
-
-# Устанавливаем зависимости
+COPY tsconfig*.json ./
+COPY vite.config.ts ./
+COPY tailwind.config.ts ./
+COPY postcss.config.js ./
+COPY .env* ./
+COPY ./src ./src
+COPY ./public ./public
 RUN npm install
-
-# Копируем исходный код
-COPY . .
-
-# Собираем приложение
 RUN npm run build
 
-# Этап production
-FROM nginx:alpine
-
-# Копируем собранное приложение из этапа сборки
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Копируем конфигурацию nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Открываем порт 80
-EXPOSE 80
-
-# Запускаем nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Production-этап
+FROM node:20-alpine
+WORKDIR /app
+COPY --from=builder /app /app
+COPY server ./server
+COPY package*.json ./
+RUN npm install --omit=dev
+EXPOSE 3000
+CMD ["concurrently", "vite preview --host 0.0.0.0 --port 4173", "node server/index.js"]

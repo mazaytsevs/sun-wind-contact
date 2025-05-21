@@ -50,11 +50,10 @@ const Index = () => {
         <Technologies />
         <NewsSection />
         <BloggerTestimonials />
-        <AiProductSupport />
         <SunGame />
         <AiChat />
-        <NewsletterSubscription />
-        <ConsultationBooking />
+        {/* <NewsletterSubscription /> */}
+        {/* <ConsultationBooking /> */}
         <ContactForm />
       </main>
       <Footer />

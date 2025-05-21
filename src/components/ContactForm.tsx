@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -9,6 +8,7 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const sectionRef = useRef<HTMLElement>(null);
+  const apiUrl = import.meta.env.VITE_API_URL || '';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,23 +33,41 @@ const ContactForm = () => {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Сообщение отправлено!",
-        description: "Спасибо за обращение. Мы свяжемся с вами в ближайшее время.",
+    try {
+
+      const res = await fetch(`${apiUrl}/send-contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
       });
-      
-      // Reset form
-      setName('');
-      setEmail('');
-      setMessage('');
+      const data = await res.json();
+      if (data.ok) {
+        toast({
+          title: "Сообщение отправлено!",
+          description: "Спасибо за обращение. Мы свяжемся с вами в ближайшее время.",
+        });
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        toast({
+          title: "Ошибка",
+          description: data.error || 'Не удалось отправить сообщение',
+          variant: 'destructive',
+        });
+      }
+    } catch (error: unknown) {
+      toast({
+        title: "Ошибка",
+        description: error instanceof Error ? error.message : 'Не удалось отправить сообщение',
+        variant: 'destructive',
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -64,7 +82,7 @@ const ContactForm = () => {
             Связаться с нами
           </h2>
           <p className="text-lg text-gray-700">
-            Оставьте свои контактные данные, и мы ответим на все ваши вопросы
+            Оставьте свои контактные данные, они придут на почту zaytseva.m.v@yandex.ru - делитесь вашим мнением о моем пет-проекте Эко-энергия.
           </p>
         </div>
 

@@ -1,5 +1,4 @@
-
-import { Instagram, Twitter, Facebook, Linkedin } from 'lucide-react';
+import { Instagram, Twitter, Facebook, Linkedin, Send } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,24 +18,21 @@ const Footer = () => {
           {/* Contact Info */}
           <div className="flex flex-col items-center md:items-start">
             <h4 className="text-lg font-semibold mb-4">Контакты</h4>
-            <p className="text-gray-400 mb-2">info@ecoenergo.ru</p>
-            <p className="text-gray-400">+7 (800) 123-45-67</p>
+            <p className="text-gray-400 mb-2">zaytseva.m.v@yandex.ru</p>
           </div>
           
           {/* Social Links */}
           <div className="flex flex-col items-center md:items-start">
             <h4 className="text-lg font-semibold mb-4">Социальные сети</h4>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.instagram.com/mazay_tseva/" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="h-6 w-6" />
+              <a href="https://t.me/mazay_tseva" className="text-gray-400 hover:text-white transition-colors">
+                <Send className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+          
+              <a href="https://www.linkedin.com/in/mazaytsevs/" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin className="h-6 w-6" />
               </a>
             </div>
